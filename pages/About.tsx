@@ -52,6 +52,8 @@ const SHOWCASE_STYLES = `
   @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
   .cs-root { font-family: 'Inter', sans-serif; transition: background-color 650ms cubic-bezier(0.4,0,0.2,1); }
   .cs-shell { height: 100vh; min-height: 520px; overflow: hidden; }
+  .cs-root { max-width: 100vw; overflow-x: hidden; }
+  .cs-ghost { max-width: 100vw; overflow: hidden; }
 
 /* Mobile: shorter shell so content isn't spaced apart */
 @media (max-width: 640px) {
