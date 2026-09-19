@@ -186,7 +186,7 @@ if (i === carRight) {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-900 min-h-screen transition-colors duration-300">
+    <div className="bg-white dark:bg-gray-900 min-h-screen transition-colors duration-300 overflow-x-hidden">
 
       <style>{SHOWCASE_STYLES}</style>
       <section
