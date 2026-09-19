@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 *.zip
+
+# Backup files
+*.bak
+dist/
+
