@@ -228,7 +228,7 @@ const Contact: React.FC = () => {
   };
 
   /* ─── 🔧 CHANGE 1/5 — Clean form-style WhatsApp message.
-     No emojis (some WhatsApp Desktop builds render them as � boxes).
+     No emojis (some WhatsApp Desktop builds render them as — boxes).
      Bold labels + line breaks stay, so the message reads like a form. */
   const buildWhatsAppMessage = (): string => {
     const timestamp = formatTimestamp();
@@ -474,140 +474,128 @@ const Contact: React.FC = () => {
       {/* ════════════════════════════════════════════════════════════════
           HERO — two-column layout with showroom image on right
       ════════════════════════════════════════════════════════════════ */}
-      <section className="relative bg-gradient-to-br from-[#0f1e33] via-[#1e3a5f] to-[#0f1e33] overflow-hidden">
+      <section
+        ref={heroIn.ref}
+        className="relative w-full min-h-screen overflow-hidden bg-[#0f1e33]"
+      >
+        {/* Background image — full bleed */}
+        <img
+          fetchpriority="high"
+          src={Baleno1}
+          alt="Surya Motors showroom"
+          aria-hidden="true"
+          loading="eager"
+          className="absolute inset-0 w-full h-full object-cover object-[70%_center] sm:object-[65%_center] md:object-center"
+        />
+
+        {/* Dark gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0f1e33]/95 via-[#0f1e33]/70 to-[#0f1e33]/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0f1e33]/80 via-transparent to-transparent" />
+
+        {/* Subtle grid pattern overlay */}
         <div
-          className="absolute inset-0 opacity-[0.07]"
+          className="absolute inset-0 opacity-[0.05] pointer-events-none"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)",
             backgroundSize: "32px 32px",
           }}
         />
-        <div
-          ref={heroIn.ref}
-          className="relative max-w-[1440px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 md:py-20 lg:py-28"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-14 items-stretch">
-                        <div className="flex flex-col justify-center">
-              <nav
-                className={`flex items-center gap-1.5 text-[0.65rem] sm:text-xs text-blue-200/70 font-medium uppercase tracking-[0.15em] mt-2 mb-4 sm:mt-0 sm:mb-5 ${
-                  heroIn.visible ? "anim-fade-up" : "opacity-0"
-                }`}
-              >
-                <span>Home</span>
-                <ChevronRight size={12} />
-                <span className="text-blue-300">Contact</span>
-              </nav>
-              <h1
-                className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.1] mb-3 sm:mb-4 ${
-                  heroIn.visible ? "anim-fade-up d-100" : "opacity-0"
-                }`}
-              >
-                We're here to help —<br />
-                <span className="text-blue-300">
-                  reach the right team, faster.
-                </span>
-              </h1>
-              <p
-                className={`text-sm sm:text-base text-blue-100/80 leading-relaxed max-w-xl mb-5 sm:mb-6 ${
-                  heroIn.visible ? "anim-fade-up d-200" : "opacity-0"
-                }`}
-              >
-                Direct lines by department. Live map. WhatsApp-fast replies. No
-                hold music, no runaround.
-              </p>
-              <div
-                className={`${heroIn.visible ? "anim-fade-up d-300" : "opacity-0"}`}
-              >
-                <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-3 sm:px-4 py-2 sm:py-2.5">
-                  <span className="relative flex h-2 w-2">
-                    <span
-                      className={`absolute inline-flex h-full w-full rounded-full opacity-75 live-dot ${
-                        status.isOpen ? "bg-emerald-400" : "bg-gray-400"
-                      }`}
-                    />
-                    <span
-                      className={`relative inline-flex h-2 w-2 rounded-full ${
-                        status.isOpen ? "bg-emerald-400" : "bg-gray-400"
-                      }`}
-                    />
-                  </span>
-                  <span className="text-xs sm:text-sm text-white font-medium whitespace-nowrap">
-                    {status.label || "Loading..."}
-                  </span>
-                </div>
-              </div>
-            </div>
 
-            <div
-              className={`relative block ${
-                heroIn.visible ? "anim-fade-right d-200" : "opacity-0"
+        {/* Content — text overlaid on image */}
+        <div className="relative z-10 max-w-[1440px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 md:py-24 lg:py-28 min-h-screen flex flex-col justify-center">
+          <div className="max-w-2xl">
+            <nav
+              className={`flex items-center gap-1.5 text-[0.65rem] sm:text-xs text-blue-200/80 font-medium uppercase tracking-[0.15em] mb-4 sm:mb-5 ${
+                heroIn.visible ? "anim-fade-up" : "opacity-0"
               }`}
             >
-              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/40 aspect-[16/10] sm:aspect-[4/3] lg:aspect-[5/4]">
-                <img
-                  fetchpriority="high" src={Baleno1}
-                  alt="Surya Motors showroom — visit us in person"
-                  className="w-full h-full object-cover"
-                  loading="eager"
-                />
-
-
-            <div
-              className={`relative block h-full ${
-                heroIn.visible ? "anim-fade-right d-200" : "opacity-0"
+              <span>Home</span>
+              <ChevronRight size={12} />
+              <span className="text-blue-300">Contact</span>
+            </nav>
+            <h1
+              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1] mb-4 sm:mb-5 ${
+                heroIn.visible ? "anim-fade-up d-100" : "opacity-0"
               }`}
-            ></div>
-
-
-            
-
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#0f1e33]/70 via-[#1e3a5f]/25 to-transparent" />
-                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-xl px-3 py-2 sm:px-3.5 sm:py-2.5 shadow-lg">
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">
-                      <Award
-                        size={14}
-                        className="text-blue-600 dark:text-blue-400"
-                      />
-                    </div>
-                    <div>
-                      <p className="text-[0.6rem] sm:text-[0.65rem] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider leading-none">
-                        Serving since
-                      </p>
-                      <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-tight mt-0.5">
-                        2009
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-xl px-3 py-2 sm:px-3.5 sm:py-2.5 shadow-lg">
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">
-                      <MessageCircle
-                        size={14}
-                        className="text-emerald-600 dark:text-emerald-400"
-                      />
-                    </div>
-                    <div>
-                      <p className="text-[0.6rem] sm:text-[0.65rem] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider leading-none">
-                        Avg. reply
-                      </p>
-                      <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-tight mt-0.5">
-                        Under 15 min
-                      </p>
-                    </div>
-                  </div>
-                </div>
+            >
+              We're here to help —<br />
+              <span className="text-blue-300">
+                reach the right team, faster.
+              </span>
+            </h1>
+            <p
+              className={`text-base sm:text-lg text-blue-100/90 leading-relaxed max-w-xl mb-6 sm:mb-7 ${
+                heroIn.visible ? "anim-fade-up d-200" : "opacity-0"
+              }`}
+            >
+              Direct lines by department. Live map. WhatsApp-fast replies. No
+              hold music, no runaround.
+            </p>
+            <div
+              className={`flex flex-wrap items-center gap-3 sm:gap-4 ${heroIn.visible ? "anim-fade-up d-300" : "opacity-0"}`}
+            >
+              <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-3 sm:px-4 py-2 sm:py-2.5">
+                <span className="relative flex h-2 w-2">
+                  <span
+                    className={`absolute inline-flex h-full w-full rounded-full opacity-75 live-dot ${
+                      status.isOpen ? "bg-emerald-400" : "bg-gray-400"
+                    }`}
+                  />
+                  <span
+                    className={`relative inline-flex h-2 w-2 rounded-full ${
+                      status.isOpen ? "bg-emerald-400" : "bg-gray-400"
+                    }`}
+                  />
+                </span>
+                <span className="text-xs sm:text-sm text-white font-medium whitespace-nowrap">
+                  {status.label || "Loading..."}
+                </span>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* ════════════════════════════════════════════════════════════════
-          MAP + FORM SPLIT
-      ════════════════════════════════════════════════════════════════ */}
+        {/* Overlaid badges — top-right: Serving since, bottom-right: Avg reply */}
+        <div
+          className={`absolute sm:top-6 sm:right-6 lg:top-8 lg:right-8 z-20 hidden sm:block bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-xl px-3 py-2 sm:px-3.5 sm:py-2.5 shadow-lg ${
+            heroIn.visible ? "anim-fade-right d-200" : "opacity-0"
+          }`}
+        >
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">
+              <Award size={14} className="text-blue-600 dark:text-blue-400" />
+            </div>
+            <div>
+              <p className="text-[0.6rem] sm:text-[0.65rem] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider leading-none">
+                Serving since
+              </p>
+              <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-tight mt-0.5">
+                2009
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className={`absolute sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8 z-20 hidden sm:block bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-xl px-3 py-2 sm:px-3.5 sm:py-2.5 shadow-lg ${
+            heroIn.visible ? "anim-fade-right d-300" : "opacity-0"
+          }`}
+        >
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">
+              <MessageCircle size={14} className="text-emerald-600 dark:text-emerald-400" />
+            </div>
+            <div>
+              <p className="text-[0.6rem] sm:text-[0.65rem] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider leading-none">
+                Avg. reply
+              </p>
+              <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-tight mt-0.5">
+                Under 15 min
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
       <section
         ref={mainIn.ref}
         className="max-w-[1440px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16"
