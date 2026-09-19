@@ -31,7 +31,7 @@ export { default as wheelAlignmentAf } from './Wheelalignmentaf.png';
 export { default as wheelAlignmentBf } from './Wheelalignmentbf.png';
 
 // Tyres
-export { default as tyresAf } from './MrfAf.png';
+export { default as tyresAf } from './Mrfaf.png';
 export { default as tyresBf } from './Mrfbf.png';
 
 // Cabin Upgrade
@@ -39,8 +39,8 @@ export { default as cabinUpgradeAf } from './CabinUpgradeAf.png';
 export { default as cabinUpgradeBf } from './CabinUpgradeBf.png';
 
 // Oil Change
-export { default as OilchangeAf } from './OilChangeAf.png';
-export { default as OilchangeBf } from './OilChangeBf.png';
+export { default as OilchangeAf } from './OilchangeAf.png';
+export { default as OilchangeBf } from './OilchangeBf.png';
 
 // Brake pads
 export {default as BrakepadsAf }from './BrakepadsAf.png';
@@ -55,7 +55,7 @@ export {default as AmazeAf} from './AmazeAf.png';
 export {default as AmazeBf} from './AmazeBf.png';
 
 //Skoda Repaint
-export {default as SkodaAf} from './SkodaAf.png';
+export {default as SkodaAf} from './SkodaAF.png';
 export {default as SkodaBf} from './SkodaBf.png';
 
 // Headlight Restoration
@@ -68,24 +68,24 @@ export {default as CreataBf} from './CreataBf.png';
 
 
 // Scorpio Engine Bay
-export {default as SwirlmarksAf} from './SwirlmarksAf.png';
-export {default as SwirlmarksBf} from './SwirlmarksBf.png';
+export {default as SwirlmarksAf} from './swirlmarksAF.png';
+export {default as SwirlmarksBf} from './swirlmarksBf.png';
 
 // Clutch Plate Replacement
 
-export {default as ClutchPlateAf} from './ClutchPlateAf.png';
-export {default as ClutchPlateBf} from './ClutchPlateBf.png';
+export {default as ClutchPlateAf} from './ClutchPlateAF.png';
+export {default as ClutchPlateBf} from './ClutchPlateBF.png';
 
 // Full Suspension
 export {default as FullSuspensionAf} from './FullSuspensionAf.png';
 export {default as FullSuspensionBf} from './FullSuspensionBf.png';
 
 // Brake System Service
-export {default as BrakeSystemAf} from './BrakeSystemAf.png';
-export {default as BrakeSystemBf} from './BrakeSystemBf.png';
+export {default as BrakeSystemAf} from './BrakeSystemAF.png';
+export {default as BrakeSystemBf} from './BrakeSystemBF.png';
 
 // Gearbox Repair
-export {default as GearboxRepairAf} from './GearboxRepairAf.png';
+export {default as GearboxRepairAf} from './GearboxRepairAF.png';
 export {default as GearboxRepairBf} from './GearboxRepairBf.png';
 
 // Suspension Overhaul
@@ -122,8 +122,8 @@ export {default as CentralLockingAf} from './CentralLockingAf.png';
 export {default as CentralLockingBf} from './CentralLockingBf.png';
 
 // Audio Installation
-export {default as AudioinstallationAf} from './AudioinstallationAf.png';       
-export {default as AudioinstallationBf} from './AudioinstallationBf.png';
+export {default as AudioinstallationAf} from './AudioInstallationAf.png';       
+export {default as AudioinstallationBf} from './AudioInstallationBf.png';
 
 // Bridgestone Tyres
 export {default as BridgestoneAf} from './BridgestoneAf.png';
@@ -167,13 +167,13 @@ export {default as TimingbeltAF} from './TimingbeltAF.png';
 export {default as TimingbeltBf} from './TimingbeltBf.png';
 
 // Shock Absorber Replacement
-export {default as ShockAbsorberAF} from './ShockAbsorberAF.png';
-export {default as ShockAbsorberBf} from './ShockAbsorberBf.png';    
+export {default as ShockAbsorberAF} from './ShockabsorberAF.png';
+export {default as ShockAbsorberBf} from './ShockabsorberBf.png';    
 
 // wiperblades
 
-export {default as WiperbladesAF} from './WiperbladesAf.png';
-export {default as WiperbladesBf} from './WiperbladesBf.png';
+export {default as WiperbladesAF} from './WiperBladesAf.png';
+export {default as WiperbladesBf} from './WiperBladesBf.png';
 
 //  Seat Covers
 export {default as SeatCoversAF} from './SeatCoversAF.png';
@@ -196,16 +196,16 @@ export {default as Systembf} from './Systembf.png';
 
 // Restoration
 export {default as Tharaf} from './Tharaf.png';
-export {default as TharBf} from './TharBf.png';
+export {default as TharBf} from './Tharbf.png';
 
 // Interior Plastics Restoration
 export {default as CarBf} from './CarBf.png';
-export {default as CarAf} from './CarAf.png';
+export {default as CarAf} from './Caraf.png';
 
 // Anti-Rust
 export {default as AntirustAF} from './AntirustAF.png';
 export {default as Antirustbf} from './Antirustbf.png';
 
 // Nissan Interior Plastics Restoration
-export {default as NissanAf} from './NissanAf.png';
-export {default as NissanBf} from './NissanBf.png';
+export {default as NissanAf} from './Nissanaf.png';
+export {default as NissanBf} from './Nissanbf.png';
