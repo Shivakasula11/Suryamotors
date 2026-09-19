@@ -7,20 +7,20 @@ import Swift from './assests/Swift.png';
 import Hycross from './assests/Hycross.png';
 import Harrier from './assests/Harrier.png';
 
-import MarutiSuzukiLogo from './assests/brands/Suziki.png';
-import Tata from './assests/brands/Tata.png';
-import Mahindra from './assests/brands/Mahi.png';
-import Honda from './assests/brands/Honda.png';
-import Toyota from './assests/brands/Toyota.png';
-import Kia from './assests/brands/Kia.png';
-import SkodaLogo from './assests/brands/SkodaLogo.png';
-import Volkswagen from './assests/brands/Volkswagen.png';
-import Nissan from './assests/brands/Nissan.png';
-import Hyundai from './assests/brands/Hyundai.png';
-import Ford from './assests/brands/Ford.png';
-import MG from './assests/brands/Mg.png';
-import Renault from './assests/brands/Renault.png';
-import Jeep from './assests/brands/Jeep.png';
+import MarutiSuzukiLogo from './assests/Brands/Suziki.png';
+import Tata from './assests/Brands/Tata.png';
+import Mahindra from './assests/Brands/Mahi.png';
+import Honda from './assests/Brands/Honda.png';
+import Toyota from './assests/Brands/Toyota.png';
+import Kia from './assests/Brands/Kia.png';
+import SkodaLogo from './assests/Brands/Skodalogo.png';
+import Volkswagen from './assests/Brands/Volkswagen.png';
+import Nissan from './assests/Brands/Nissan.png';
+import Hyundai from './assests/Brands/Hyundai.png';
+import Ford from './assests/Brands/Ford.png';
+import MG from './assests/Brands/Mg.png';
+import Renault from './assests/Brands/Renault.png';
+import Jeep from './assests/Brands/Jeep.png';
 
 
 const BRANDS = [
