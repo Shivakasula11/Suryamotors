@@ -63,7 +63,7 @@ export const COMPANY_TAGLINE = "Complete Car Care Under One Roof";
 export const COMPANY_PHONE = "+91 9948153518, +91 9291470852";
 export const COMPANY_EMAIL = "suryamotorskvs@gmail.com";
 export const COMPANY_ADDRESS =
-  "Opposite Jio petrol Pump  Autonagar , Bodhan,Nizamabad, Telangana - 503185";
+  "Auto Nagar, Bodhan, opposite Jio Petrol Pump, Nizamabad District, Telangana - 503185";
 
 // Images sourced from Unsplash for better relevance
 export const SERVICE_CATEGORIES: ServiceCategory[] = [
