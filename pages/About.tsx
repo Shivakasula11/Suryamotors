@@ -49,6 +49,10 @@ const CAR_SHOWCASE = [
 ];
 
 const SHOWCASE_STYLES = `
+  html, body { max-width: 100vw; overflow-x: hidden !important; }
+  * { max-width: 100%; }
+  .cs-item { max-width: 100vw !important; }
+
   @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
   .cs-root { font-family: 'Inter', sans-serif; transition: background-color 650ms cubic-bezier(0.4,0,0.2,1); }
   .cs-shell { height: 100vh; min-height: 520px; overflow: hidden; }
