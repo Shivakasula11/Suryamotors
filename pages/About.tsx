@@ -210,7 +210,7 @@ if (i === carRight) {
           <div className="absolute inset-0" style={{ zIndex: 3 }}>
             {CAR_SHOWCASE.map((car, i) => (
               <div key={i} className="cs-item" style={getCarItemStyle(i)}>
-                <img loading="eager" src={car.src} alt={car.label} draggable={false} />
+                <img loading="eager" fetchpriority="high" src={car.src} alt={car.label} draggable={false} />
               </div>
             ))}
           </div>

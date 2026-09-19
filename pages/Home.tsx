@@ -724,7 +724,7 @@ const Home: React.FC = () => {
                   className="absolute inset-0 rounded-full scale-90 blur-3xl opacity-20 dark:opacity-10"
                   style={{ background: 'radial-gradient(circle, #2563eb 0%, #93c5fd 60%, transparent 100%)' }}
                 />
-                <img loading="eager"
+                <img loading="eager" fetchpriority="high"
                   src={Home3}
                   alt="Expert car service at Surya Motors"
                   className="relative z-10 w-full mx-auto object-contain drop-shadow-2xl"

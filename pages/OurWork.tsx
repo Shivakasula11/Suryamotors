@@ -1038,7 +1038,7 @@ const OurWork: React.FC = () => {
   min-h-[520px] sm:min-h-[640px] md:min-h-[720px] 
   lg:min-h-[100dvh]">
     <img
-  src={img.ourWorkHero}
+  fetchpriority="high" src={img.ourWorkHero}
   alt="Workshop team"
   aria-hidden="true"
   loading="eager"

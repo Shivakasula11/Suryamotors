@@ -217,7 +217,7 @@ const ServiceDetails: React.FC = () => {
 >
   {/* Background image — proper img element so mobile browsers handle it correctly */}
   <img
-  src={service.image}
+  fetchpriority="high" src={service.image}
   alt={service.title}
   aria-hidden="true"
   loading="eager"

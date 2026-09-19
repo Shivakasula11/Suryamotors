@@ -167,7 +167,7 @@ const showSolid = isScrolled || isOpen || !hasDarkHero;
             <NavLink to="/" className="n-logo-link flex-shrink-0 flex items-center gap-1.5 sm:gap-2 group min-w-0">
               <div className="n-logo-box flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 xl:w-11 xl:h-11 bg-white rounded-lg flex items-center justify-center overflow-hidden shadow-sm ring-1 ring-gray-200 dark:ring-gray-700 group-hover:ring-blue-500 group-hover:shadow-md transition-all duration-200">
                 <img
-                  src={Logo}
+                  fetchpriority="high" src={Logo}
                   alt="Surya Motors logo"
                   className="n-logo-icon w-6 h-6 sm:w-8 sm:h-8 xl:w-9 xl:h-9 object-contain"
                   loading="eager"

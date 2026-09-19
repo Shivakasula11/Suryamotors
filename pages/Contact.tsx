@@ -546,7 +546,7 @@ const Contact: React.FC = () => {
             >
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/40 aspect-[16/10] sm:aspect-[4/3] lg:aspect-[5/4]">
                 <img
-                  src={Baleno1}
+                  fetchpriority="high" src={Baleno1}
                   alt="Surya Motors showroom — visit us in person"
                   className="w-full h-full object-cover"
                   loading="eager"
