@@ -13,7 +13,7 @@ const PageLoader: React.FC = () => {
           <div className="absolute inset-0 rounded-full border-[3px] border-transparent border-t-blue-600 border-r-blue-600 animate-spin" />
 
           {/* Logo */}
-          <img loading="eager"
+          <img
             src={Logo}
             alt="Surya Motors"
             className="w-16 h-auto relative z-10 animate-[fadeScale_1.8s_ease-in-out_infinite]"

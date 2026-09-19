@@ -210,7 +210,7 @@ if (i === carRight) {
           <div className="absolute inset-0" style={{ zIndex: 3 }}>
             {CAR_SHOWCASE.map((car, i) => (
               <div key={i} className="cs-item" style={getCarItemStyle(i)}>
-                <img loading="eager" src={car.src} alt={car.label} draggable={false} />
+                <img src={car.src} alt={car.label} draggable={false} />
               </div>
             ))}
           </div>
@@ -295,7 +295,7 @@ if (i === carRight) {
           </div>
           <div className="relative order-1 md:order-2">
             <div className="relative h-[240px] sm:h-[320px] md:h-[380px] lg:h-[420px] rounded-2xl overflow-hidden shadow-2xl">
-              <img loading="lazy"
+              <img
                 src="https://miro.medium.com/max/1400/1*JktzC9GrA_l4yz0cCy8a5Q.jpeg"
                 alt="Mechanic working"
                 className="w-full h-full object-cover"
@@ -316,7 +316,7 @@ if (i === carRight) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
             <div className="relative h-56 sm:h-72 md:h-80 rounded-2xl overflow-hidden shadow-lg">
-              <img loading="lazy"
+              <img
                 src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?q=80&w=800&auto=format&fit=crop"
                 alt="Workshop"
                 className="w-full h-full object-cover"
@@ -422,7 +422,7 @@ if (i === carRight) {
                     setTeamIndex(i);
                   }}
                 >
-                  <img loading="lazy" src={member.image} alt={member.name} draggable={false} />
+                  <img src={member.image} alt={member.name} draggable={false} />
                 </div>
               );
             })}

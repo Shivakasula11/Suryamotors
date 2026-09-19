@@ -724,7 +724,7 @@ const Home: React.FC = () => {
                   className="absolute inset-0 rounded-full scale-90 blur-3xl opacity-20 dark:opacity-10"
                   style={{ background: 'radial-gradient(circle, #2563eb 0%, #93c5fd 60%, transparent 100%)' }}
                 />
-                <img loading="eager"
+                <img
                   src={Home3}
                   alt="Expert car service at Surya Motors"
                   className="relative z-10 w-full mx-auto object-contain drop-shadow-2xl"
@@ -916,7 +916,7 @@ const Home: React.FC = () => {
 
                         {/* Avatar + name + role */}
                         <div className="flex items-center gap-2 sm:gap-3 pt-3 sm:pt-4 border-t border-gray-200 dark:border-gray-600">
-                          <img loading="lazy"
+                          <img
                             src={testimonial.avatar}
                             alt={testimonial.name}
                             className="w-8 h-8 sm:w-11 sm:h-11 xl:w-12 xl:h-12 rounded-full object-cover ring-2 ring-blue-100 dark:ring-blue-900 flex-shrink-0"
