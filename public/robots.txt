@@ -1,0 +1,18 @@
+# Robots.txt for Surya Motors
+# https://suryamotors.vercel.app/
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://suryamotors.vercel.app/sitemap.xml
+
+# Block common bot noise
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

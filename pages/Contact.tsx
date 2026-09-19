@@ -445,8 +445,8 @@ const Contact: React.FC = () => {
     },
     {
       icon: Award,
-      title: "15+ Years Trusted",
-      desc: "Serving Bhainsa and nearby districts since 2009.",
+      title: "5+ Years Trusted",
+      desc: "Serving Bodhan and nearby districts since 2020.",
     },
     {
       icon: Star,
@@ -571,7 +571,7 @@ const Contact: React.FC = () => {
                 Serving since
               </p>
               <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-tight mt-0.5">
-                2009
+                2020
               </p>
             </div>
           </div>
@@ -1231,7 +1231,7 @@ const Contact: React.FC = () => {
                     SURYA MOTORS
                   </p>
                   <p className="text-[0.65rem] text-blue-200/70 uppercase tracking-[0.12em] mt-0.5">
-                    Multi Brand · Bhainsa
+                    Multi Brand · Bodhan
                   </p>
                 </div>
               </div>
