@@ -110,7 +110,7 @@ const NAVBAR_STYLES = `
 
   /* ── Prevent logo text overflow on extreme small widths ───────── */
   @media (max-width: 320px) {
-    .n-logo-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60%; }
+    .n-logo-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 75%; }
   }
 `;
 
@@ -175,7 +175,7 @@ const showSolid = isScrolled || isOpen || !hasDarkHero;
               </div>
               {/* Logo text swaps color between transparent/solid states */}
               <span
-                className={`n-logo-text font-bold text-base sm:text-xl xl:text-2xl tracking-tight hidden sm:block transition-colors duration-300 ${
+                className={`n-logo-text font-bold text-sm sm:text-xl xl:text-2xl tracking-tight block transition-colors duration-300 ${
                   showSolid ? 'text-gray-900 dark:text-white' : 'text-white'
                 }`}
               >
@@ -183,13 +183,6 @@ const showSolid = isScrolled || isOpen || !hasDarkHero;
                 <span className={showSolid ? 'text-blue-600' : 'text-blue-300'}>
                   MOTORS
                 </span>
-              </span>
-              <span
-                className={`n-logo-text font-bold text-base tracking-tight sm:hidden transition-colors duration-300 ${
-                  showSolid ? 'text-gray-900 dark:text-white' : 'text-white'
-                }`}
-              >
-                SURYA
               </span>
             </NavLink>
           </div>
