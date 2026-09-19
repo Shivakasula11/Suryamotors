@@ -558,7 +558,7 @@ const Contact: React.FC = () => {
 
         {/* Overlaid badges — top-right: Serving since, bottom-right: Avg reply */}
         <div
-          className={`absolute sm:top-6 sm:right-6 lg:top-8 lg:right-8 z-20 hidden sm:block bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-xl px-3 py-2 sm:px-3.5 sm:py-2.5 shadow-lg ${
+          className={`absolute sm:top-24 sm:right-6 lg:top-28 lg:right-8 z-20 hidden sm:block bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-xl px-3 py-2 sm:px-3.5 sm:py-2.5 shadow-lg ${
             heroIn.visible ? "anim-fade-right d-200" : "opacity-0"
           }`}
         >
