@@ -42,7 +42,8 @@ export { default as Polishing } from "./Services/Polishing.png";
 export { default as ScratchRepair } from "./Services/ScratchRepair.png";
 export { default as AntiRustCoating } from "./Services/AntiRustCoating.png";
 export { default as ColorMatching } from "./Services/ColorMatching.png";
-export { default as AlloyAf } from "../Ourworkimgs/AlloyAf.png";
+export { default as AlloyAf } from "../Ourworkimgs/Alloyaf.png";
+
 export { default as EngineParts } from "./Services/EngineParts.png";
 export { default as Filters } from "./Services/Filters.png";
 export { default as Belts } from "./Services/Belts.png";
