@@ -23,7 +23,7 @@ export { default as engineOverhaulAf } from './EngineOverhaulaf.png';
 export { default as engineOverhaulBf } from './EngineOverhaulbf.png';
 
 // Alloy
-export { default as alloyAf } from './Alloyaf.png';
+export { default as alloyAf } from './AlloyAf.png';
 export { default as alloyBf } from './Alloybf.png';
 
 // Wheel Alignment

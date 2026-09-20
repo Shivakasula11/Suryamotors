@@ -38,3 +38,4 @@ export{default as WiringDiagnostics} from "./WiringDiagnostics.png";
 export{default as LightRepair} from "./LightRepair.png";
 export {default as ACElectricalWork} from "./ACElectricalWork.png";
 export {default as AudioInstallation} from "./AudioInstallation.png";
+export {default as SprayPainting} from "./SprayPainting.png";

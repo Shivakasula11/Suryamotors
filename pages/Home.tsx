@@ -2,13 +2,13 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ShieldCheck, Clock, Award, Phone, MapPin, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { SERVICE_CATEGORIES, TESTIMONIALS } from '../constants';
-// (no framer-motion import needed — animation uses native requestAnimationFrame)
 import ServiceCard from '../components/ServiceCard';
 import { COMPANY_PHONE, COMPANY_ADDRESS } from '../constants';
 import  Home1 from '../pages/assests/Home1.png'
 import Oil from '../pages/assests/Oilchange1.png'
 import Home2 from '../pages/assests/Home2.png'
 import Home3 from '../pages/assests/Home3.png'
+import RedBmw2 from '../pages/assests/RedBmw2.png'
 
 /* ─── Styles ──────────────────────────────────────────────────────────── */
 const HOME_STYLES = `
@@ -329,13 +329,6 @@ function useInView(threshold = 0.12) {
   return { ref, visible };
 }
 
-
-
-/**
- * Renders an SVG that tracks the card outline.
- * A 110 px lit segment + blur filter travels the full perimeter at
- * ~4 s / revolution (medium pace).  Seamless loop guaranteed.
- */
 const BorderGlow = ({ duration = 4000 }: { duration?: number }) => {
   const measureRef = useRef<SVGRectElement | null>(null);
   const glowRef    = useRef<SVGRectElement | null>(null);
@@ -345,13 +338,12 @@ const BorderGlow = ({ duration = 4000 }: { duration?: number }) => {
     const gEl = glowRef.current;
     if (!mEl || !gEl) return;
 
-    // getTotalLength() on SVGGeometryElement returns perimeter in SVG px
+    
     const totalLen: number = mEl.getTotalLength();
     if (!totalLen) return;
 
     const GLOW_LEN = 260; // px of the bright segment
-    // strokeDasharray: 260 px lit, then a gap large enough that only ONE
-    // copy of the segment is ever visible on the perimeter.
+
     gEl.setAttribute('stroke-dasharray', `${GLOW_LEN} ${totalLen}`);
 
     let startTime: number | null = null;
@@ -359,11 +351,9 @@ const BorderGlow = ({ duration = 4000 }: { duration?: number }) => {
 
     const tick = (now: number) => {
       if (startTime === null) startTime = now;
-      // pct: 0 → 1 per duration ms, then repeats
+     
       const pct = ((now - startTime) % duration) / duration;
-      // negative offset moves the segment FORWARD along the path.
-      // at pct=0 → offset=0 (segment at start).
-      // at pct=1 → offset=-totalLen (segment back at start = seamless).
+      
       gEl.setAttribute('stroke-dashoffset', String(-(pct * totalLen)));
       rafId = requestAnimationFrame(tick);
     };
@@ -379,12 +369,7 @@ const BorderGlow = ({ duration = 4000 }: { duration?: number }) => {
       style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', overflow: 'visible' }}
     >
       <defs>
-        {/*
-         * Two-pass glow filter:
-         * 1. feGaussianBlur spreads the stroke into a wide soft halo.
-         * 2. feMerge composites the original sharp stroke on top.
-         * Result: bright crisp centre line + soft blue glow.
-         */}
+        
         <filter id="cbg-glow" x="-60%" y="-60%" width="220%" height="220%">
           <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur" />
           <feMerge>
@@ -394,7 +379,6 @@ const BorderGlow = ({ duration = 4000 }: { duration?: number }) => {
         </filter>
       </defs>
 
-      {/* Invisible rect used only for getTotalLength() measurement */}
       <rect
         ref={measureRef}
         fill="none"
@@ -405,7 +389,6 @@ const BorderGlow = ({ duration = 4000 }: { duration?: number }) => {
         ry={16}
       />
 
-      {/* Static dim base ring — always visible, anchors the card outline */}
       <rect
         fill="none"
         stroke="#1e40af"
@@ -417,11 +400,6 @@ const BorderGlow = ({ duration = 4000 }: { duration?: number }) => {
         ry={16}
       />
 
-      {/*
-       * Travelling glow segment.
-       * strokeDasharray / strokeDashoffset are set imperatively by rAF above;
-       * initial values here are just safe placeholders.
-       */}
       <rect
         ref={glowRef}
         fill="none"
@@ -440,7 +418,7 @@ const BorderGlow = ({ duration = 4000 }: { duration?: number }) => {
   );
 };
 
-/** Wraps children; mounts BorderGlow only when active=true. */
+
 const MovingBorderCard = ({
   children,
   active = false,
@@ -461,7 +439,7 @@ const MovingBorderCard = ({
       padding: '2px',
       overflow: 'hidden',
       borderRadius,
-      // Subtle ambient glow on the active card (transitions in/out smoothly)
+     
       boxShadow: active
         ? '0 0 0 0px transparent, 0 8px 28px rgba(96,165,250,0.28)'
         : undefined,
@@ -476,12 +454,10 @@ const MovingBorderCard = ({
     </div>
   </div>
 );
-/* ────────────────────────────────────────────────────────────────────────── */
 
-/* ─── ORIGINAL DATA — UNTOUCHED ──────────────────────────────────────── */
 const HERO_SLIDES = [
   {
-    image: 'https://images.unsplash.com/photo-1574310178554-e20b6dec121e?q=80&w=1170&auto=format&fit=crop',
+    image: RedBmw2,
     label: 'Complete Car Care',
     heading: 'Complete Car Care',
     highlight: 'Under One Roof',
@@ -866,26 +842,14 @@ const Home: React.FC = () => {
               {TESTIMONIALS.map((testimonial, i) => {
                 const isActive = i === testiActive;
                 return (
-                  /*
-                   * 🔧 CHANGE 3/4 — onClick added to each slide container.
-                   * Clicking a side card calls testiGoTo(i) to make it the
-                   * active card (triggers the gradient border + coverflow move).
-                   * Center card gets cursor:default since it's already active.
-                   * cf-slide-hidden cards are unaffected (pointer-events:none in CSS).
-                   */
+                  
                   <div
                     key={testimonial.id}
                     className={`cf-slide ${getSlideClass(i)}`}
                     onClick={() => !isActive && testiGoTo(i)}
                     style={{ cursor: isActive ? 'default' : 'pointer' }}
                   >
-                    {/*
-                     * 🔧 CHANGE 4/4 — MovingBorderCard is now conditional on
-                     * active={isActive}. When false, the conic-gradient div is not
-                     * mounted at all — zero animation cost on inactive cards.
-                     * h-card + shadow-lg stay on the wrapper (not the inner div)
-                     * so the box-shadow escapes the overflow:hidden boundary normally.
-                     */}
+                    
                     <MovingBorderCard
                       active={isActive}
                       borderRadius="1rem"

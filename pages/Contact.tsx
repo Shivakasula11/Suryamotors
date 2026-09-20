@@ -27,10 +27,6 @@ import {
 import { COMPANY_ADDRESS, COMPANY_EMAIL, COMPANY_PHONE } from "../constants";
 import Baleno1 from "../pages/assests/Baleno1.png";
 
-/* ═══════════════════════════════════════════════════════════════════════
-   🔧 CHANGE 2/10 — Extended STYLES
-   Added modal fadeIn+scale, toast slide-in, backdrop fade animations.
-   ═══════════════════════════════════════════════════════════════════════ */
 const STYLES = `
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -169,8 +165,6 @@ function useInView(threshold = 0.12) {
   }, [threshold]);
   return { ref, visible };
 }
-
-/* ─── Open-now helper — small utility, computes live status ────────── */
 function useOpenStatus() {
   const [status, setStatus] = useState<{ isOpen: boolean; label: string }>({
     isOpen: false,
@@ -193,7 +187,7 @@ function useOpenStatus() {
   return status;
 }
 
-/* ─── 🔧 CHANGE 3/10 — Timestamp helper for the WhatsApp message ───── */
+
 function formatTimestamp(): string {
   const now = new Date();
   const day = now.getDate();
@@ -227,9 +221,6 @@ const Contact: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  /* ─── 🔧 CHANGE 1/5 — Clean form-style WhatsApp message.
-     No emojis (some WhatsApp Desktop builds render them as — boxes).
-     Bold labels + line breaks stay, so the message reads like a form. */
   const buildWhatsAppMessage = (): string => {
     const timestamp = formatTimestamp();
     const lines = [
@@ -266,7 +257,7 @@ const Contact: React.FC = () => {
     const encodedMessage = encodeURIComponent(whatsappMessage);
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappURL, "_blank");
-    /* ──────────────────────────────────────────────────────────── */
+
 
     // Close modal, reset form, fire toast
     setShowConfirmModal(false);
@@ -310,9 +301,7 @@ const Contact: React.FC = () => {
 
   const status = useOpenStatus();
 
-  /* ─── 🔧 CHANGE 13/13 — Map interactive state + share helpers ─── */
   const [mapLoaded, setMapLoaded] = useState(false);
-  /* 🔧 CHANGE 2/5 — added "error" so the button can show "Copy failed" */
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">(
     "idle",
   );
@@ -327,9 +316,6 @@ const Contact: React.FC = () => {
     }
   };
 
-  /* 🔧 CHANGE 3/5 — robust share with visible feedback and legacy clipboard fallback.
-     Tries: (1) Web Share API on mobile, (2) modern clipboard API on HTTPS,
-     (3) legacy execCommand("copy") on HTTP so it still works in dev/preview. */
   const legacyCopy = (text: string): boolean => {
     try {
       const ta = document.createElement("textarea");
@@ -367,13 +353,12 @@ const Contact: React.FC = () => {
         await (navigator as any).share(shareData);
         return; // success — native sheet handles feedback
       } catch (err: any) {
-        // AbortError = user cancelled the share sheet, not a real failure
+       
         if (err?.name === "AbortError") return;
         // fall through to clipboard fallback
       }
     }
 
-    // 2) Modern clipboard API (HTTPS + localhost)
     if (
       typeof navigator !== "undefined" &&
       navigator.clipboard &&
@@ -601,15 +586,7 @@ const Contact: React.FC = () => {
         className="max-w-[1440px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16"
       >
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
-          {/* ════════════════════════════════════════════════════════════
-              🔧 CHANGE 13/13 — Professional map redesign
-              — Rich header with gradient pin, coordinates, live open pill
-              — Loading skeleton with shimmer until iframe reports load
-              — Floating branded info card (top-left overlay)
-              — Expand-in-maps button (top-right overlay)
-              — 3-action bar (Directions / Call / Share)
-              — Coordinate strip footer
-          ════════════════════════════════════════════════════════════ */}
+    
           <div
             className={`lg:col-span-3 ${mainIn.visible ? "anim-fade-left" : "opacity-0"}`}
           >
@@ -1167,23 +1144,6 @@ const Contact: React.FC = () => {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════════
-          🔧 CHANGE 9/10 — CONFIRMATION PREVIEW MODAL (NEW)
-          Shown when the customer submits the form. Displays a branded
-          header (SM logo lockup), a preview of the WhatsApp message
-          exactly as it will appear on the dealership's phone, and two
-          actions: Edit (go back) or Continue on WhatsApp.
-
-          ── LOGO NOTE ──
-          The "SM" square below is a placeholder monogram. When Akhil
-          has the real Surya Motors logo:
-             1. Drop it in public/ as `logo-surya-motors.png` (or .svg)
-             2. Replace the <div className="w-11 h-11 ..."> block with:
-                <img loading="lazy" src="/logo-surya-motors.png"
-                     alt="Surya Motors"
-                     className="w-11 h-11 rounded-lg bg-white p-1
-                                object-contain shadow-lg" />
-      ════════════════════════════════════════════════════════════════ */}
       {showConfirmModal && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 anim-backdrop"
@@ -1269,8 +1229,6 @@ const Contact: React.FC = () => {
                 </p>
               </div>
 
-              {/* Message preview card (mimics WhatsApp bubble tone) */}
-              {/* 🔧 CHANGE 5/5 — preview mirrors the emoji-free WhatsApp message */}
               <div className="bg-gray-50 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700 border-l-[3px] border-l-[#25D366] rounded-xl px-3.5 py-3 text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed space-y-1.5 break-words">
                 <div className="font-bold text-gray-900 dark:text-white text-xs sm:text-sm">
                   SURYA MOTORS - New Enquiry
@@ -1341,11 +1299,7 @@ const Contact: React.FC = () => {
         </div>
       )}
 
-      {/* ════════════════════════════════════════════════════════════════
-          🔧 CHANGE 10/10 — SUCCESS TOAST (NEW)
-          Slides down from the top, sits for 5 seconds, then slides back
-          up. Fires after "Continue on WhatsApp" is tapped in the modal.
-      ════════════════════════════════════════════════════════════════ */}
+     
       {toastState !== "hidden" && (
         <div
           className={`fixed top-4 sm:top-6 left-1/2 z-[110] ${toastState === "in" ? "anim-toast-in" : "anim-toast-out"}`}

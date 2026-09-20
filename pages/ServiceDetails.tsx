@@ -525,7 +525,7 @@ const ServiceDetails: React.FC = () => {
                     <img loading="lazy"
                       src={img.url}
                       alt={img.title}
-                      className="gallery-img w-full h-full object-cover object-center"
+                      className="gallery-img w-full h-full object-contain object-center"
                     />
                     <div className="gallery-overlay absolute inset-0 flex items-end p-3 sm:p-5">
                       <div>

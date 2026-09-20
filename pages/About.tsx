@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react'; // 🔧 CHANGE 1/5 — added useEffect, useCallback, useRef for car showcase carousel
-import { CheckCircle, ArrowRight, ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react'; // 🔧 CHANGE 2/5 — added ArrowLeft for showcase nav
+import React, { useState, useEffect, useCallback, useRef } from 'react'; 
+import { CheckCircle, ArrowRight, ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react'; 
 import { COMPANY_NAME, TEAM } from '../constants';
 import { Link } from 'react-router-dom';
 import Skoda from './assests/Skoda.png';
 import Swift from './assests/Swift.png';
 import Hycross from './assests/Hycross.png';
 import Harrier from './assests/Harrier.png';
+import About1 from './assests/About1.png';
+import Home2 from './assests/Home2.png'
 
 import MarutiSuzukiLogo from './assests/Brands/Suziki.png';
 import Tata from './assests/Brands/Tata.png';
@@ -141,11 +143,11 @@ const About: React.FC = () => {
   const VISIBLE = 3;
   const maxIndex = Math.max(0, TEAM.length - VISIBLE);
 
-  // Loop forever — wrap around at both ends so the arrows never disable.
+  
   const prevTeam = () => setTeamIndex(i => (i - 1 + TEAM.length) % TEAM.length);
   const nextTeam = () => setTeamIndex(i => (i + 1) % TEAM.length);
 
-  // 🔧 CHANGE 4/5 — Car showcase carousel state (independent of team carousel).
+  
   const [carIndex, setCarIndex] = useState(0);
   const [isCarAnimating, setIsCarAnimating] = useState(false);
   const [isMobile, setIsMobile] = useState<boolean>(typeof window !== 'undefined' ? window.innerWidth < 640 : false);
@@ -302,7 +304,7 @@ if (i === carRight) {
           <div className="relative order-1 md:order-2">
             <div className="relative h-[240px] sm:h-[320px] md:h-[380px] lg:h-[420px] rounded-2xl overflow-hidden shadow-2xl">
               <img loading="lazy"
-                src="https://miro.medium.com/max/1400/1*JktzC9GrA_l4yz0cCy8a5Q.jpeg"
+                src={About1}
                 alt="Mechanic working"
                 className="w-full h-full object-cover"
               />
@@ -323,7 +325,7 @@ if (i === carRight) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
             <div className="relative h-56 sm:h-72 md:h-80 rounded-2xl overflow-hidden shadow-lg">
               <img loading="lazy"
-                src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?q=80&w=800&auto=format&fit=crop"
+                src={Home2}
                 alt="Workshop"
                 className="w-full h-full object-cover"
               />
@@ -387,7 +389,7 @@ if (i === carRight) {
           </div>
 
           {/* Coverflow stage */}
-          <div className="tc-stage">
+          <div className="tc-stage relative">
             {TEAM.map((member, i) => {
               const total = TEAM.length;
               let offset = i - teamIndex;
@@ -430,8 +432,25 @@ if (i === carRight) {
                 >
                   <img loading="lazy" src={member.image} alt={member.name} draggable={false} />
                 </div>
-              );
+                            );
             })}
+
+            <button
+              type="button"
+              onClick={prevTeam}
+              aria-label="Previous team member"
+              className="tc-nav tc-nav-side tc-nav-left"
+            >
+              <ChevronLeft size={22} />
+            </button>
+            <button
+              type="button"
+              onClick={nextTeam}
+              aria-label="Next team member"
+              className="tc-nav tc-nav-side tc-nav-right"
+            >
+              <ChevronRight size={22} />
+            </button>
           </div>
 
           {/* Center person's name */}
@@ -476,8 +495,8 @@ if (i === carRight) {
         <style>{`
           @keyframes scrollLTR { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
           @keyframes scrollRTL { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
-          .marquee-ltr { animation: scrollLTR 38s linear infinite; }
-          .marquee-rtl { animation: scrollRTL 42s linear infinite; }
+          .marquee-ltr { animation: scrollLTR 10s linear infinite; }
+          .marquee-rtl { animation: scrollRTL 12s linear infinite; }
           .marquee-ltr:hover, .marquee-rtl:hover { animation-play-state: paused; }
           .brand-pill {
             display: inline-flex;

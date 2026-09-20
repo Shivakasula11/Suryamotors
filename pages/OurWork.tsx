@@ -41,10 +41,6 @@ interface WorkItem {
   quote?: { text: string; author: string };
 }
 
-/* ═══════════════════════════════════════════════════════════════════════
-   DATA — Replace image URLs with your own workshop photos for best impact.
-   The first item is the FEATURED project shown large at the top.
-   ═══════════════════════════════════════════════════════════════════════ */
 const WORKS: WorkItem[] = [
   {
     id: 1,
@@ -907,15 +903,24 @@ const BeforeAfterSlider: React.FC<{
       onPointerCancel={onPointerUp}
       className="relative w-full h-full overflow-hidden bg-gray-200 dark:bg-gray-800 cursor-ew-resize select-none touch-none"
     >
-      {/* After image (full background) */}
-      <img
-        src={after}
-        alt={`${title} – After`}
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-        draggable={false}
-        loading="lazy"
-      />
-      {/* Before image clipped from the right */}
+      {/* AFTER side — clipped from the LEFT, symmetric to BEFORE */}
+      <div
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+        style={{ clipPath: `inset(0 0 0 ${pos}%)` }}
+      >
+        <img
+          src={after}
+          alt={`${title} – After`}
+          className="absolute inset-0 w-full h-full object-cover"
+          draggable={false}
+          loading="lazy"
+        />
+        <span className="absolute top-4 right-4 z-10 bg-blue-600 text-white text-[10px] sm:text-xs font-semibold px-2.5 py-1 rounded-sm tracking-[0.2em]">
+          AFTER
+        </span>
+      </div>
+
+      {/* BEFORE side — clipped from the RIGHT, symmetric to AFTER */}
       <div
         className="absolute inset-0 overflow-hidden pointer-events-none"
         style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
@@ -927,18 +932,13 @@ const BeforeAfterSlider: React.FC<{
           draggable={false}
           loading="lazy"
         />
+        <span className="absolute top-4 left-4 z-10 bg-blue-600 backdrop-blur-sm text-white text-[10px] sm:text-xs font-semibold px-2.5 py-1 rounded-sm tracking-[0.2em]">
+          BEFORE
+        </span>
       </div>
 
       {/* Subtle top gradient for label readability */}
-      <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
-
-      {/* Labels */}
-      <span className="absolute top-4 left-4 z-10 bg-black/60 backdrop-blur-sm text-white text-[10px] sm:text-xs font-semibold px-2.5 py-1 rounded-sm tracking-[0.2em] pointer-events-none">
-        BEFORE
-      </span>
-      <span className="absolute top-4 right-4 z-10 bg-blue-600 text-white text-[10px] sm:text-xs font-semibold px-2.5 py-1 rounded-sm tracking-[0.2em] pointer-events-none">
-        AFTER
-      </span>
+      <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/40 to-transparent pointer-events-none z-[5]" />
 
       {/* Vertical divider */}
       <div
@@ -985,10 +985,6 @@ const OurWork: React.FC = () => {
     [activeCategory, restOfWorks],
   );
 
-  // ─── Load-More pagination ──────────────────────────────────────────
-  // Show 9 cards initially; reveal 9 more per click. Reset back to 9
-  // whenever the filter category changes so the user never lands on a
-  // page that opens already-expanded from a previous filter.
   const INITIAL_VISIBLE = 9;
   const LOAD_STEP = 9;
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
@@ -1045,7 +1041,7 @@ const OurWork: React.FC = () => {
   className="absolute inset-0 w-full h-full object-cover object-[30%_center] sm:object-[80%_center] md:object-top"
 />
 
-        {/* Dark overlay — stronger on mobile for text readability, lighter on desktop */}
+        
       <div
   aria-hidden="true"
   className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-black/40 sm:from-black/85 sm:via-black/60 sm:to-black/30 md:from-black/70 md:via-black/30 md:to-transparent"

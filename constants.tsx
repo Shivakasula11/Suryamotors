@@ -46,7 +46,41 @@ import {
  LightRepair,
  ACElectricalWork,
  AudioInstallation,
- 
+ SprayPainting,
+ ColorMatching,
+ ScratchRepair,
+ Polishing,
+ AntiRustCoating,
+ AlloyAf,
+ EngineParts,
+ Filters,
+ Belts,
+ Covers,
+ Clutchplate,
+ Bumpers,
+ Castrol,
+ Brakeoil,
+ Coolant,
+ Grease,
+ Hp,
+ Servo,
+//  ---tyres
+ BridgestoneTyre,
+ JkTyre,
+ MrfTyre,
+ Ceat,
+ ChinaTyre,
+ GoodYear,
+
+// Decors
+Cardecors,
+Wheelcaps,
+System,
+Seats,
+Mats,
+Idols,
+Perfume,
+
   // --- Team member photos -----------------------
   ServiceAdvisor,
   Actech,
@@ -56,6 +90,15 @@ import {
   Mechanics,
   ClutchRepair,
   SuspensionRepair,
+
+  //----Reviews-----
+  Review1,  
+  Review2,
+  Review3,
+  Review4,
+  Review5,
+  Review6,
+
 } from "./pages/assests/images";
 
 export const COMPANY_NAME = "Surya Multi Brand Car Services";
@@ -239,29 +282,29 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     gallery: [
       {
         title: "Spray Painting",
-        url: "https://racepaint.com.au/wp-content/uploads/2023/12/Custom-Car-Painting.jpg",
+        url: SprayPainting,
       },
       {
         title: "Color Matching",
-        url: "https://tse1.explicit.bing.net/th/id/OIP.cUgYE_TZ8De-jGxLJ8BwwwHaFj?w=800&h=600&rs=1&pid=ImgDetMain&o=7&rm=3",
+        url: ColorMatching,
       },
       {
         title: "Scratch Repair",
-        url: "https://www.detailingdevils.com/uploads/blogs/scrblog.webp",
+        url: ScratchRepair,
       },
       {
         title: "Polishing",
-        url: "https://static.vecteezy.com/system/resources/previews/003/582/888/non_2x/car-detailing-male-mechanic-holding-car-polishing-machine-auto-industry-car-polishing-and-painting-and-repair-shop-free-photo.jpg",
+        url: Polishing,
       },
 
       {
         title: "Anti Rust Coating",
-        url: "https://th.bing.com/th/id/R.0b2b575e01574edd1f3397ea8b916dd6?rik=1goKS%2fWYPpO1%2fw&riu=http%3a%2f%2fsanghvicarshoppe.com%2fwp-content%2fuploads%2f2023%2f12%2fanti-rust-coating-.png&ehk=6NHiYo42v%2fqGz5%2b8OnYXG5V7f2WNkVyLoMKHAQm9Jeo%3d&risl=&pid=ImgRaw&r=0",
+        url: AntiRustCoating,
       },
 
       {
         title: "Alloy Wheel Painting",
-        url: "https://cncwheels.com.au/wp-content/uploads/2022/10/IS_POWDER_COATING_WHEELS_A_GOOD_IDEA.jpg",
+        url: AlloyAf,
       },
     ],
   },
@@ -327,29 +370,29 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     gallery: [
       {
         title: "Engine Parts",
-        url: "https://tse1.mm.bing.net/th/id/OIP.HfWwqKOXfmSyfiQZ3fBwiAHaHa?pid=ImgDet&w=474&h=474&rs=1&o=7&rm=3",
+        url: EngineParts,
       },
       {
         title: "Filters",
-        url: "https://th.bing.com/th/id/R.8386f9b4d8c31e759e56f80154e51a7f?rik=54RngUTquPLzGA&riu=http%3a%2f%2fsl-filters.com%2fproducts%2f2_oil_filter_01.jpg&ehk=q%2fJDYvHEewv7zruQ%2fql4dUnqRtzpm0TCW8dNF9SBBhc%3d&risl=&pid=ImgRaw&r=0",
+        url: Filters,
       },
       {
         title: "Belts",
-        url: "https://tse3.mm.bing.net/th/id/OIP.danKwnLtmyY3QHerSjeE3AHaEN?rs=1&pid=ImgDetMain&o=7&rm=3",
+        url: Belts,
       },
       {
         title: "Body Covers",
-        url: "https://5.imimg.com/data5/SELLER/Default/2023/12/366799266/JW/TY/SV/124235632/jungle-print-waterproof-car-body-covers-500x500.jpeg",
+        url: Covers,
       },
 
       {
         title: "Clutch Plates",
-        url: "https://tse4.mm.bing.net/th/id/OIP.yBhpOLZ7NeD1dplQAie7pgAAAA?rs=1&pid=ImgDetMain&o=7&rm=3",
+        url: Clutchplate,
       },
 
       {
         title: "Bumper",
-        url: "https://guangjin.sg/wp-content/uploads/2023/05/bumper.jpg",
+        url: Bumpers,
       },
     ],
   },
@@ -371,28 +414,28 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     gallery: [
       {
         title: "Engine Oil",
-        url: "https://tse1.mm.bing.net/th/id/OIP.I72XgFTX2n-bc8FP8XB5zgHaGi?rs=1&pid=ImgDetMain&o=7&rm=3",
+        url: Castrol,
       },
       {
         title: "Brake Fluid",
-        url: "https://cdn.shopify.com/s/files/1/0670/2750/1370/products/BOSCHBRAKEFLUIDDOT3.jpg?v=1667610738&width=1946",
+        url: Brakeoil,
       },
       {
         title: "Coolant",
-        url: "https://tse4.mm.bing.net/th/id/OIP.xhsHs2wGYFDtjo_0HSPjjgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
+        url: Coolant,
       },
       {
         title: "Grease",
-        url: "https://m.media-amazon.com/images/I/71xfVHvsBsL._SL1500_.jpg",
+        url: Grease,
       },
 
       {
         title: "Hydraulic Fluid",
-        url: "https://5.imimg.com/data5/SELLER/Default/2022/8/JQ/AY/MF/157325237/hp-hydraulic-oil-68-1000x1000.jpg",
+        url: Hp,
       },
       {
         title: "Gear Oil",
-        url: "https://5.imimg.com/data5/HO/CV/MY-4019847/gear-hp-oil-500x500.jpg",
+        url: Servo,
       },
     ],
   },
@@ -413,29 +456,29 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     gallery: [
       {
         title: "Bridge stone Tyres",
-        url: "https://tse1.mm.bing.net/th/id/OIP.ledqFzAajBnd7-p9rGyVvwHaD5?rs=1&pid=ImgDetMain&o=7&rm=3",
+        url: BridgestoneTyre,
       },
       {
         title: "JK Tyres",
-        url: "https://mir-s3-cdn-cf.behance.net/projects/404/4373e997147229.Y3JvcCwxMzgwLDEwODAsMjE1LDA.png",
+        url: JkTyre,
       },
       {
         title: "MRF Tyres",
-        url: "https://brandtamizha.com/wp-content/uploads/2023/04/tyre1.jpg",
+        url: MrfTyre,
       },
       {
         title: "Good Years",
-        url: "https://www.geomargulfllc.com/wp-content/uploads/2022/04/Goodyear-Tires-1400-1024x512-1.jpg",
+        url: GoodYear,
       },
 
       {
         title: "Ceat Tyres",
-        url: "https://5.imimg.com/data5/SELLER/Default/2025/1/480773831/HL/AG/KJ/136769402/ceat-car-tyres-1000x1000.jpg",
+        url: Ceat,
       },
 
       {
         title: "Local Tyres",
-        url: "https://tse4.mm.bing.net/th/id/OIP.GBUY-m6o7tA3CDOwuT3E4QHaC9?w=1000&h=400&rs=1&pid=ImgDetMain&o=7&rm=3",
+        url: ChinaTyre,
       },
     ],
   },
@@ -444,8 +487,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: "Car Decors",
     description: "Enhance your car interior with premium accessories.",
     icon: Armchair,
-    image:
-      "https://www.techyv.com/sites/default/2022/10/users/Proofreader1/car-accessories.jpg",
+    image: Cardecors,
     subServices: [
       { name: "Seat Covers" },
       { name: "Floor Mats" },
@@ -457,60 +499,86 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     gallery: [
       {
         title: "Luxury Seats",
-        url: "https://tse1.mm.bing.net/th/id/OIP.jIG2pGPovgby6YiXcOJaxwHaHa?w=800&h=800&rs=1&pid=ImgDetMain&o=7&rm=3",
+        url: Seats,
       },
       {
         title: "Premium  Perfumes",
-        url: "https://smsupermall.in/product-img/Lia-Car-Gel-Citric-Tango-Lasts-1703850801.jpg",
+        url: Perfume,
       },
       {
         title: "Custom Mats",
-        url: "https://m.media-amazon.com/images/I/81ghkPZNpDL._AC_SL1500_.jpg",
+        url: Mats,
       },
       {
         title: "Idols & Figurines",
-        url: "https://m.media-amazon.com/images/I/8175fYybvJL._SL1500_.jpg",
+        url: Idols,
       },
 
       {
         title: " Wheel Covers",
-        url: "https://m.media-amazon.com/images/I/71Ix7fSSLsL._SL1500_.jpg",
+        url: Wheelcaps,
       },
 
       {
         title: "Andriod system",
-        url: "https://mediacloud.carbuyer.co.uk/image/private/s--ekbHr281--/v1579645224/carbuyer/2019/05/android_auto_1.jpg",
+        url: System,
       },
     ],
   },
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
+  
   {
     id: 1,
-    name: "Rajesh Kumar",
+    name: "Ramesh K",
     role: "Regular Customer",
     comment:
-      "Excellent service! My car feels brand new after the full service package.",
-    avatar: "https://picsum.photos/id/1005/100/100",
+      "Got my Baleno serviced here. The team explained the work clearly before starting and delivered the car on time. Really satisfied with the service.",
+    avatar: Review1,
   },
   {
     id: 2,
-    name: "Priya Sharma",
-    role: "Business Owner",
+    name: "Sai Kumar",
+    role: "Happy Customer",
     comment:
-      "Very professional staff and transparent pricing. Highly recommended.",
-    avatar: "https://picsum.photos/id/1011/100/100",
+      "Visited for AC service and a general check-up. The cooling is much better now and the staff kept me updated throughout the service.",
+    avatar: Review2,
   },
   {
     id: 3,
-    name: "Amit Patel",
-    role: "Car Enthusiast",
+    name: "Praveen Reddy",
+    role: "Car Owner",
     comment:
-      "The detailing work is top-notch. They really care about the vehicles.",
-    avatar: "https://picsum.photos/id/1012/100/100",
+      "I brought my Creta for detailing and polishing. The finish came out really well and most of the visible swirl marks were gone. Good work by the team.",
+    avatar: Review3,
+  },
+  {
+    id: 4,
+    name: "Arun Kumar",
+    role: "Regular Customer",
+    comment:
+      "I have visited Surya Motors a few times for regular maintenance. The service has been consistent and they explain the charges properly before doing any additional work.",
+    avatar: Review4,
+  },
+  {
+    id: 5,
+    name: "Naveen",
+    role: "Happy Customer",
+    comment:
+      "Had an issue with the brakes and gave the car here for inspection. They identified the problem quickly and fixed it the same day. Overall a good experience.",
+    avatar: Review5,
+  },
+  {
+    id: 6,
+    name: "Manisha",
+    role: "Car Owner",
+    comment:
+      "Good service and reasonable pricing. They called me before replacing any parts, which I really appreciated. The car is running smoothly after the service.",
+    avatar: Review6,
   },
 ];
+
 
 export const TEAM: TeamMember[] = [
   {
