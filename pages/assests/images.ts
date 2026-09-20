@@ -1,5 +1,5 @@
-﻿// Barrel file that re-exports every image referenced by constants.tsx.
-// Paths are case-sensitive — they must match disk exactly for the Vercel (Linux) build.
+// Barrel file that re-exports every image referenced by constants.tsx.
+// Paths are case-sensitive � they must match disk exactly for the Vercel (Linux) build.
 
 // --- Service images ---------------------------
 export { default as Wheel } from "./Services/wheel.png";
@@ -60,7 +60,7 @@ export {default as Servo } from "./Services/Servo.png";
 
 // Tyres
 export { default as BridgestoneTyre } from "./Tyres/Bridgestone.png";
-export {default as JkTyre} from "./Tyres/Jktyre.png";
+export {default as JkTyre} from "./Tyres/JkTyre.png";
 export {default as MrfTyre} from "./Tyres/MrfTyre.png";
 export {default as Ceat} from "./Tyres/Ceat.png";
 export {default as ChinaTyre} from "./Tyres/ChinaTyre.png";
@@ -68,7 +68,7 @@ export {default as GoodYear} from "./Tyres/GoodYear.png";
 
 // Cardecors
 export {default as Cardecors} from "./Decors/Cardecors.png";
-export {default as Wheelcaps} from "./Decors/WheelCaps.png";
+export {default as Wheelcaps} from "./Decors/Wheelcaps.png";
 export {default as System} from "./Decors/System.png";
 export {default as Seats} from "./Decors/Seats.png";
 export {default as Mats} from "./Decors/Mats.png";
