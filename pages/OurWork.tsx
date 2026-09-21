@@ -1031,14 +1031,15 @@ const OurWork: React.FC = () => {
           ═══════════════════════════════════════════════════════════════ */}
           
           <section className="relative bg-gray-950 text-white overflow-hidden 
-  min-h-[520px] sm:min-h-[640px] md:min-h-[720px] 
-  lg:min-h-[100dvh]">
+  min-h-[100dvh] sm:min-h-[640px] md:min-h-[720px] 
+  lg:min-h-[100dvh]
+  flex items-center md:block">
     <img
   fetchpriority="high" src={img.ourWorkHero}
   alt="Workshop team"
   aria-hidden="true"
   loading="eager"
-  className="absolute inset-0 w-full h-full object-cover object-[30%_center] sm:object-[80%_center] md:object-top"
+  className="absolute inset-0 w-full h-full object-cover object-[65%_center] sm:object-[80%_center] md:object-top"
 />
 
         
@@ -1047,12 +1048,12 @@ const OurWork: React.FC = () => {
   className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-black/40 sm:from-black/85 sm:via-black/60 sm:to-black/30 md:from-black/70 md:via-black/30 md:to-transparent"
 />
 
-        <div className="relative max-w-7xl 2xl:max-w-[1600px] mx-auto px-5 sm:px-6 md:px-8 lg:px-10 2xl:px-12 py-20 sm:py-28 md:py-40 lg:py-52 xl:py-60">
+        <div className="relative w-full max-w-7xl 2xl:max-w-[1600px] mx-auto px-5 sm:px-6 md:px-8 lg:px-10 2xl:px-12 py-8 sm:py-28 md:py-40 lg:py-52 xl:py-60">
         
 
           <FadeIn delay={100}>
             <h1
-              className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-[0.95] tracking-tight max-w-[65%] sm:max-w-5xl"
+              className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-[0.95] tracking-tight max-w-[80%] sm:max-w-5xl"
               style={{
                 textShadow:
                   "0 4px 32px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.5)",
@@ -1065,7 +1066,7 @@ const OurWork: React.FC = () => {
           </FadeIn>
 
           <FadeIn delay={200}>
-            <div className="flex items-start gap-4 mt-8 sm:mt-10 max-w-[60%] sm:max-w-2xl">
+            <div className="flex items-start gap-4 mt-8 sm:mt-10 max-w-[85%] sm:max-w-2xl">
   <span className="block h-px w-12 mt-3 sm:mt-4 bg-blue-500/60 shrink-0" />
   <p
     className="text-sm sm:text-lg md:text-xl leading-relaxed font-medium"

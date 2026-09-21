@@ -520,12 +520,12 @@ const ServiceDetails: React.FC = () => {
                   <div
                     key={idx}
                     className={`gallery-card group relative rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 cursor-pointer bg-gray-100 dark:bg-gray-800 ${galleryRef.visible ? `sd-up sd-d${Math.min(idx + 1, 6)}` : "opacity-0"}`}
-                    style={{ aspectRatio: "4/3" }}
+                    // style={{ aspectRatio: "4/3" }}
                   >
                     <img loading="lazy"
                       src={img.url}
                       alt={img.title}
-                      className="gallery-img w-full h-full object-contain object-center"
+                      className="gallery-img w-full h-full object-cover object-center"
                     />
                     <div className="gallery-overlay absolute inset-0 flex items-end p-3 sm:p-5">
                       <div>

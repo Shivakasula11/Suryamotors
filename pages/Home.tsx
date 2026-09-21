@@ -308,8 +308,22 @@ const HOME_STYLES = `
   @media (max-width: 320px) {
     .hero-heading, .care-heading, .section-h2 { word-break: break-word; hyphens: auto; }
   }
-  @media (pointer: coarse) {
+    @media (pointer: coarse) {
     .hero-btn { min-height: 44px; }
+  }
+
+  /* ── Mobile hero — fill full viewport + better car framing ── */
+  @media (max-width: 640px) {
+    .hero-section-fit {
+      height: 100vh !important;
+      height: 100dvh !important;
+      min-height: 100dvh !important;
+      max-height: none !important;
+    }
+    .hero-slide-fit {
+      background-position: center 35% !important;
+      background-size: cover !important;
+    }
   }
 `;
 
@@ -458,6 +472,7 @@ const MovingBorderCard = ({
 const HERO_SLIDES = [
   {
     image: RedBmw2,
+     bgPosition: '65% center',
     label: 'Complete Car Care',
     heading: 'Complete Car Care',
     highlight: 'Under One Roof',
@@ -465,6 +480,7 @@ const HERO_SLIDES = [
   },
   {
     image: Home2,
+     bgPosition: '70% center',
     label: 'Expert Mechanics',
     heading: 'Certified Experts,',
     highlight: 'Every Repair Done Right',
@@ -561,11 +577,11 @@ const Home: React.FC = () => {
       {/* ════════════════════════════════════════════════════════════════
           HERO CAROUSEL — UNTOUCHED
       ════════════════════════════════════════════════════════════════ */}
-      <section className="relative h-[75vh] min-h-[480px] max-h-[640px] sm:h-[85vh] sm:min-h-[520px] sm:max-h-[800px] lg:h-[100vh] lg:max-h-[1000px] flex items-center overflow-hidden text-white">
+      <section className="hero-section-fit relative h-[75vh] min-h-[480px] max-h-[640px] sm:h-[85vh] sm:min-h-[520px] sm:max-h-[800px] lg:h-[100vh] lg:max-h-[1000px] flex items-center overflow-hidden text-white">
         {HERO_SLIDES.map((slide, i) => (
          <div
   key={i}
-  className="absolute inset-0 bg-cover bg-no-repeat transition-opacity duration-1000"
+  className="hero-slide-fit absolute inset-0 bg-cover bg-no-repeat transition-opacity duration-1000"
   style={{
     backgroundImage: `url("${slide.image}")`,
     backgroundPosition: slide.bgPosition || 'center',
