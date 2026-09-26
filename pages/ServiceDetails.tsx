@@ -215,13 +215,15 @@ const ServiceDetails: React.FC = () => {
              sm:h-[70vh] sm:min-h-[480px] sm:max-h-[720px]
              lg:h-screen lg:max-h-none"
 >
-  {/* Background image — proper img element so mobile browsers handle it correctly */}
+  {/* Background image — proper img element so mobile browsers handle it correctly.
+      🔧 Mobile: object-center so the subject (car / mechanic) is framed in the middle
+      instead of being cropped off the left. */}
   <img
   fetchpriority="high" src={service.image}
   alt={service.title}
   aria-hidden="true"
   loading="eager"
-  className="absolute inset-0 w-full h-full object-cover object-[75%_center] sm:object-[65%_center] md:object-cover md:object-[center_30%] lg:object-center"
+  className="absolute inset-0 w-full h-full object-cover object-center sm:object-[65%_center] md:object-cover md:object-[center_30%] lg:object-center"
 />
 
   {/* Dark gradient overlay for text readability */}
@@ -287,46 +289,58 @@ const ServiceDetails: React.FC = () => {
 
       {/* ════════════════════════════════════════════════════════════════
             QUICK STATS STRIP
+            🔧 Unified style across all breakpoints: white bg, icons stacked
+            on top of value + label. Scales up cleanly on tablet/desktop.
         ════════════════════════════════════════════════════════════════ */}
-      <div className="bg-blue-600 shadow-lg shadow-blue-700/30">
+      <div className="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
         <div
           className="stats-strip max-w-7xl mx-auto
-                     px-2 py-2 grid grid-cols-2 divide-x divide-blue-500
-                     sm:px-4 sm:py-3 sm:grid-cols-4
-                     md:px-6 md:py-4
-                     lg:px-8"
+                     px-2 py-3 grid grid-cols-4
+                     sm:px-4 sm:py-5
+                     md:px-6 md:py-6
+                     lg:px-8 lg:py-8"
         >
           {QUICK_STATS.map(({ icon: Icon, value, label }, i) => (
             <div
               key={label}
-              className={`stat-item flex items-center justify-center
-                          gap-1.5 px-2 py-1.5
-                          sm:gap-2 sm:px-3 sm:py-2
-                          md:gap-3 md:px-4 md:py-2
+              className={`stat-item flex flex-col items-center justify-center text-center
+                          gap-1.5 px-1 py-1
+                          sm:gap-2 sm:px-3
+                          md:gap-2.5 md:px-4
+                          lg:gap-3 lg:px-6
                           sd-pop sd-d${i + 1}`}
             >
               <div
-                className="stat-icon bg-white/15 rounded-lg flex items-center justify-center flex-shrink-0
-                            w-7 h-7
-                            sm:w-8 sm:h-8 sm:rounded-xl
-                            md:w-9 md:h-9"
+                className="stat-icon flex items-center justify-center flex-shrink-0
+                            w-9 h-9
+                            sm:w-11 sm:h-11
+                            md:w-12 md:h-12
+                            lg:w-14 lg:h-14"
               >
-                <Icon size={14} className="text-white sm:w-4 sm:h-4 md:w-[18px] md:h-[18px]" />
+                <Icon
+                  className="text-blue-600 dark:text-blue-400
+                             w-5 h-5
+                             sm:w-6 sm:h-6
+                             md:w-7 md:h-7
+                             lg:w-8 lg:h-8"
+                />
               </div>
               <div className="min-w-0">
                 <p
-                  className="stat-value font-extrabold text-white leading-none truncate
-                             text-xs
-                             sm:text-sm
-                             md:text-base"
+                  className="stat-value font-bold text-gray-900 dark:text-white leading-tight
+                             text-[0.7rem]
+                             sm:text-base
+                             md:text-lg
+                             lg:text-xl"
                 >
                   {value}
                 </p>
                 <p
-                  className="stat-label text-blue-100 font-medium uppercase tracking-wide mt-0.5 truncate
+                  className="stat-label text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wide mt-0.5 sm:mt-1
                              text-[0.5rem]
-                             sm:text-[0.6rem]
-                             md:text-[0.65rem]"
+                             sm:text-[0.65rem]
+                             md:text-xs
+                             lg:text-sm"
                 >
                   {label}
                 </p>

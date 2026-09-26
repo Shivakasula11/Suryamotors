@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ShieldCheck, Clock, Award, Phone, MapPin, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Clock, Award, Phone, MapPin, CheckCircle, ChevronLeft, ChevronRight, Car, Star } from 'lucide-react';
 import { SERVICE_CATEGORIES, TESTIMONIALS } from '../constants';
 import ServiceCard from '../components/ServiceCard';
 import { COMPANY_PHONE, COMPANY_ADDRESS } from '../constants';
@@ -504,6 +504,13 @@ const HERO_SLIDES = [
   },
 ];
 
+/* Static trust stats shown in the hero (mobile only, doesn't change per slide) */
+const HERO_STATS = [
+  { icon: Car,         value: 'All Brands',    label: 'Service Support'  },
+  { icon: ShieldCheck, value: 'Genuine Parts', label: 'Quality Assured'  },
+  { icon: Star,        value: '4.6 Rating',    label: 'Happy Customers'  },
+];
+
 const Home: React.FC = () => {
   /* ── ORIGINAL — UNTOUCHED ─────────────────────────────────────────── */
   const featuredServices = SERVICE_CATEGORIES.slice(0, 3);
@@ -621,6 +628,34 @@ const Home: React.FC = () => {
                 Contact Us
               </Link>
             </div>
+          </div>
+
+          {/* ═══════════════════════════════════════════════════════════
+              🔧 MOBILE-ONLY hero stats row — matches the reference mockup.
+              Sits outside the animated key={current} wrapper so it stays
+              static across slides. Hidden on sm+ so desktop stays untouched.
+          ═══════════════════════════════════════════════════════════ */}
+          <div className="sm:hidden mt-6 grid grid-cols-3">
+            {HERO_STATS.map(({ icon: Icon, value, label }, i, arr) => (
+              <div
+                key={value}
+                className={`flex items-center gap-2.5 px-2 ${
+                  i < arr.length - 1 ? 'border-r border-white/20' : ''
+                }`}
+              >
+                <div className="w-9 h-9 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-md shadow-blue-600/30">
+                  <Icon size={17} className="text-white" strokeWidth={2.2} />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-white font-bold text-[0.72rem] leading-tight">
+                    {value}
+                  </p>
+                  <p className="text-gray-300 text-[0.58rem] leading-tight mt-0.5">
+                    {label}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

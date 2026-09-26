@@ -1066,20 +1066,24 @@ const OurWork: React.FC = () => {
           </FadeIn>
 
           <FadeIn delay={200}>
-            <div className="flex items-start gap-4 mt-8 sm:mt-10 max-w-[85%] sm:max-w-2xl">
-  <span className="block h-px w-12 mt-3 sm:mt-4 bg-blue-500/60 shrink-0" />
-  <p
-    className="text-sm sm:text-lg md:text-xl leading-relaxed font-medium"
-  style={{
-    color: "#F0FCFF",
-    textShadow:
-      "0 2px 12px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,1), 0 0 32px rgba(0,0,0,0.8)",
-  }}
->
-                Real cars. Real damage. Real results. Every project below is a
-                vehicle we restored — drag the slider on each image to see the
-                transformation our team delivered.
-              </p>
+            {/* 🔧 Mobile: accent line ABOVE paragraph, text flows naturally at column width.
+                Desktop (sm+): keeps the original side-by-side editorial layout. */}
+            <div className="mt-6 sm:mt-10 max-w-[62%] sm:max-w-2xl">
+              <div className="sm:flex sm:items-start sm:gap-4">
+                <span className="block h-px w-12 bg-blue-500/60 shrink-0 mb-4 sm:mb-0 sm:mt-4" />
+                <p
+                  className="text-sm sm:text-lg md:text-xl leading-relaxed font-medium"
+                  style={{
+                    color: "#F0FCFF",
+                    textShadow:
+                      "0 2px 12px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,1), 0 0 32px rgba(0,0,0,0.8)",
+                  }}
+                >
+                  Real cars. Real damage. Real results. Every project below is a
+                  vehicle we restored — drag the slider on each image to see the
+                  transformation our team delivered.
+                </p>
+              </div>
             </div>
           </FadeIn>
         </div>

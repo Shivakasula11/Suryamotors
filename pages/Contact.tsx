@@ -386,8 +386,8 @@ const Contact: React.FC = () => {
     {
       icon: Car,
       label: "Sales",
-      title: "New & Pre-owned",
-      desc: "Explore inventory, book test drives, get on-road quotes.",
+      title: "Quality Pre-Owned Cars",
+      desc: "Explore our carefully selected pre-owned cars, book a test drive, and get a transparent on-road price quote.",
       phone: COMPANY_PHONE,
       tone: {
         bg: "bg-blue-50 dark:bg-blue-900/30",

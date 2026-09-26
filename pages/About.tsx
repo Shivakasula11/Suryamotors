@@ -5,6 +5,9 @@ import {
   ChevronLeft,
   ChevronRight,
   ArrowLeft,
+  Wrench,
+  ShieldCheck,
+  Users,
 } from "lucide-react";
 import { COMPANY_NAME, TEAM } from "../constants";
 import { Link } from "react-router-dom";
@@ -84,32 +87,17 @@ const CAR_SHOWCASE = [
   },
 ];
 
+// Note: @import MUST be the first rule in a stylesheet — moved to the top so Anton actually loads.
 const SHOWCASE_STYLES = `
+  @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
   html, body { max-width: 100vw; overflow-x: hidden !important; }
-  * { max-width: 100%; }
   .cs-item { max-width: 100vw !important; }
 
-  @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-  .cs-root { font-family: 'Inter', sans-serif; transition: background-color 650ms cubic-bezier(0.4,0,0.2,1); }
+  .cs-root { font-family: 'Inter', sans-serif; transition: background-color 650ms cubic-bezier(0.4,0,0.2,1); max-width: 100vw; overflow-x: hidden; }
   .cs-shell { height: 100vh; min-height: 520px; overflow: hidden; }
-  .cs-root { max-width: 100vw; overflow-x: hidden; }
   .cs-ghost { max-width: 100vw; overflow: hidden; }
 
-/* Mobile: full viewport height hero */
-@media (max-width: 640px) {
-  .cs-shell {
-    height: 100vh;
-    height: 100dvh;
-    min-height: 560px;
-    max-height: none;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  /* Larger aspect ratio on mobile — makes the car look taller/beefier */
-  .cs-item {
-    aspect-ratio: 4 / 3 !important;
-  }
-}
   .cs-ghost { font-family: 'Anton', sans-serif; font-weight: 900; color: #fff; line-height: 1; text-transform: uppercase; letter-spacing: -0.02em; white-space: nowrap; font-size: clamp(60px, 15vw, 200px); opacity: 0.9; }
   .cs-brand-label { font-size: 12px; letter-spacing: 0.18em; }
   .cs-body-text { max-width: 340px; }
@@ -118,34 +106,244 @@ const SHOWCASE_STYLES = `
   .cs-discover { font-family: 'Anton', sans-serif; font-weight: 400; color: #fff; letter-spacing: -0.02em; line-height: 1; text-transform: uppercase; text-decoration: none; font-size: clamp(18px, 3.5vw, 48px); opacity: 0.95; transition: opacity 200ms; }
   .cs-discover:hover { opacity: 1; }
   .cs-item { position: absolute; aspect-ratio: 16 / 10; transition: transform 650ms cubic-bezier(0.4,0,0.2,1), filter 650ms cubic-bezier(0.4,0,0.2,1), opacity 650ms cubic-bezier(0.4,0,0.2,1), left 650ms cubic-bezier(0.4,0,0.2,1), bottom 650ms cubic-bezier(0.4,0,0.2,1), width 650ms cubic-bezier(0.4,0,0.2,1); will-change: transform, filter, opacity; }
-  
-    // //.cs-item img { width: 100%; height: 100%; object-fit: contain; object-position: center; user-select: none; -webkit-user-drag: none; display: block; filter: drop-shadow(0 30px 25px rgba(0,0,0,0.45)) drop-shadow(0 12px 12px rgba(0,0,0,0.3)); }
-
-    .cs-item img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; user-select: none; -webkit-user-drag: none; display: block; background: transparent; filter: drop-shadow(0 25px 20px rgba(0,0,0,0.4)); }
+  .cs-item img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; user-select: none; -webkit-user-drag: none; display: block; background: transparent; filter: drop-shadow(0 25px 20px rgba(0,0,0,0.4)); }
   .cs-nav-btn { transition: transform 150ms, background-color 150ms; }
   .cs-nav-btn:hover { transform: scale(1.08); background-color: rgba(255,255,255,0.12); }
   .cs-grain { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E"); background-size: 200px 200px; opacity: 0.4; }
 
-  @media (max-width: 300px) {
-    .cs-shell { min-height: 480px; }
-    .cs-ghost { font-size: 38px; }
-    .cs-brand-label { font-size: 9px; letter-spacing: 0.1em; }
-    .cs-tagline { font-size: 12px; }
-    .cs-body-desc { display: none; }
-    .cs-discover { font-size: 14px; }
-    .cs-nav-btn-inner { width: 36px !important; height: 36px !important; }
-  }
-  @media (min-width: 301px) and (max-width: 480px) {
-    .cs-ghost { font-size: clamp(44px, 11.5vw, 64px); letter-spacing: -0.03em; }
-    .cs-tagline { font-size: 14px; letter-spacing: 0.04em; }
-    .cs-discover { font-size: 16px; }
-    .cs-body-text { max-width: 62%; }
-  }
   @media (min-width: 481px) and (max-width: 768px) {
       .cs-ghost { font-size: clamp(80px, 12vw, 130px); }
   }
   @media (min-width: 1536px) {
     .cs-ghost { font-size: clamp(160px, 12vw, 220px); }
+  }
+`;
+
+// 🔧 MOBILE HERO STYLES — dedicated layout that matches the mockup exactly.
+// Only applied when isMobile=true; desktop layout is completely untouched.
+const MOBILE_HERO_STYLES = `
+  .csm-root {
+    position: relative;
+    width: 100%;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: background-color 650ms cubic-bezier(0.4,0,0.2,1);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .csm-ghost-wrap {
+    position: relative;
+    z-index: 2;
+    /* Clear the fixed SURYA MOTORS header + notch safe area, so ghost text never overlaps */
+    padding: calc(env(safe-area-inset-top, 0px) + 96px) 12px 0;
+    text-align: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  @media (max-height: 700px) {
+    .csm-ghost-wrap { padding-top: calc(env(safe-area-inset-top, 0px) + 80px); }
+  }
+  .csm-ghost {
+    font-family: 'Anton', 'Impact', sans-serif;
+    font-weight: 900;
+    color: #ffffff;
+    /* font-size is set inline based on word length — see JSX */
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .csm-cars {
+    position: relative;
+    flex: 0 0 auto;
+    height: 260px;
+    margin-top: -14px;
+    z-index: 3;
+  }
+  @media (max-width: 380px) {
+    .csm-cars { height: 220px; }
+  }
+  @media (min-height: 780px) {
+    .csm-cars { height: 300px; }
+  }
+
+  .csm-car {
+    position: absolute;
+    transition: opacity 650ms cubic-bezier(0.4,0,0.2,1),
+                transform 650ms cubic-bezier(0.4,0,0.2,1),
+                filter 650ms cubic-bezier(0.4,0,0.2,1),
+                left 650ms cubic-bezier(0.4,0,0.2,1),
+                right 650ms cubic-bezier(0.4,0,0.2,1);
+    will-change: transform, opacity, filter;
+  }
+  .csm-car img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+    filter: drop-shadow(0 22px 18px rgba(0,0,0,0.5));
+  }
+
+  .csm-content {
+    position: relative;
+    z-index: 4;
+    padding: 14px 20px 28px;
+    color: #ffffff;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .csm-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
+    line-height: 1.15;
+    color: #ffffff;
+    margin: 0 0 12px;
+  }
+
+  .csm-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    opacity: 0.88;
+    color: #ffffff;
+    margin: 0 0 20px;
+  }
+
+  .csm-pills {
+    display: grid;
+    /* minmax(0, 1fr) is CRUCIAL — stops the third column ("Expert Technicians")
+       from expanding beyond its share to fit long words. */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .csm-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 10px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.04);
+    min-height: 62px;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .csm-pill-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #3b82f6;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px -2px rgba(59, 130, 246, 0.45);
+  }
+  .csm-pill-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #ffffff;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* Narrow phones (Galaxy A12/S22+, iPhone SE, iPhone 5, etc.) — scale everything down */
+  @media (max-width: 380px) {
+    .csm-content { padding: 12px 14px 24px; }
+    .csm-pills { gap: 6px; margin-bottom: 18px; }
+    .csm-pill { padding: 8px 7px; gap: 6px; min-height: 56px; border-radius: 12px; }
+    .csm-pill-icon { width: 28px; height: 28px; }
+    .csm-pill-text { font-size: 10px; line-height: 1.15; }
+    .csm-tagline { font-size: 20px; }
+    .csm-desc { font-size: 13px; margin-bottom: 16px; }
+    .csm-nav { width: 46px; height: 46px; }
+    .csm-book { height: 50px; font-size: 12.5px; letter-spacing: 0.06em; border-radius: 16px; }
+  }
+
+  /* Very narrow (iPhone 5 / 320px) — even tighter */
+  @media (max-width: 340px) {
+    .csm-pill-icon { width: 26px; height: 26px; }
+    .csm-pill-text { font-size: 9.5px; }
+    .csm-content { padding: 10px 12px 20px; }
+  }
+
+  .csm-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+  }
+  .csm-nav {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    background: transparent;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 150ms, background-color 200ms;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .csm-nav:active {
+    transform: scale(0.94);
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  .csm-book {
+    flex: 1;
+    margin-left: 6px;
+    height: 56px;
+    border-radius: 18px;
+    background: #2563eb;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.5);
+    transition: background 200ms, transform 150ms;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .csm-book:active {
+    transform: scale(0.98);
+    background: #1d4ed8;
+  }
+
+  .csm-grain {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    opacity: 0.35;
   }
 `;
 
@@ -242,12 +440,13 @@ const About: React.FC = () => {
   const carLeft = (carIndex + CAR_SHOWCASE.length - 1) % CAR_SHOWCASE.length;
   const carRight = (carIndex + 1) % CAR_SHOWCASE.length;
 
+  // Desktop (unchanged) car positioning
   const getCarItemStyle = (i: number): React.CSSProperties => {
     if (i === carCenter) {
       return {
         left: "50%",
-        bottom: isMobile ? "22%" : "14%",
-        width: isMobile ? "100%" : "52%",
+        bottom: "14%",
+        width: "52%",
         transform: "translateX(-50%)",
         filter: "blur(0px)",
         opacity: 1,
@@ -257,70 +456,106 @@ const About: React.FC = () => {
     }
     if (i === carLeft) {
       return {
-        left: isMobile ? "10%" : "15%",
-        bottom: isMobile ? "46%" : "26%",
-        width: isMobile ? "22%" : "20%",
+        left: "15%",
+        bottom: "26%",
+        width: "20%",
         transform: "translateX(-50%)",
         filter: "blur(4px)",
-        opacity: isMobile ? 0 : 0.7,
+        opacity: 0.7,
         zIndex: 10,
-        pointerEvents: isMobile ? "none" : "auto",
+        pointerEvents: "auto",
       };
     }
     if (i === carRight) {
       return {
-        left: isMobile ? "90%" : "85%",
-        bottom: isMobile ? "46%" : "26%",
-        width: isMobile ? "22%" : "20%",
+        left: "85%",
+        bottom: "26%",
+        width: "20%",
         transform: "translateX(-50%)",
         filter: "blur(4px)",
-        opacity: isMobile ? 0 : 0.7,
+        opacity: 0.7,
         zIndex: 10,
-        pointerEvents: isMobile ? "none" : "auto",
+        pointerEvents: "auto",
       };
     }
     // back
     return {
       left: "50%",
-      bottom: isMobile ? "54%" : "34%",
+      bottom: "34%",
       width: "14%",
       transform: "translateX(-50%)",
       filter: "blur(6px)",
-      opacity: isMobile ? 0 : 0.5,
+      opacity: 0.5,
       zIndex: 5,
-      pointerEvents: isMobile ? "none" : "auto",
+      pointerEvents: "auto",
+    };
+  };
+
+  // Mobile-only car positioning — ONLY the center car is visible.
+  // Side/back cars are kept in the DOM (for smooth swap animation) but fully hidden.
+  const getMobileCarStyle = (i: number): React.CSSProperties => {
+    if (i === carCenter) {
+      return {
+        left: "50%",
+        top: "0",
+        width: "94%",
+        height: "100%",
+        transform: "translateX(-50%)",
+        opacity: 1,
+        filter: "blur(0px)",
+        zIndex: 20,
+      };
+    }
+    // All non-center cars: invisible, no interaction, no visual bleed.
+    return {
+      left: "50%",
+      top: "0",
+      width: "94%",
+      height: "100%",
+      transform: "translateX(-50%)",
+      opacity: 0,
+      pointerEvents: "none",
+      filter: "blur(0px)",
+      zIndex: 5,
     };
   };
 
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen transition-colors duration-300 overflow-x-hidden">
       <style>{SHOWCASE_STYLES}</style>
-      <section
-        className="cs-root relative w-full overflow-hidden"
-        style={{ backgroundColor: CAR_SHOWCASE[carIndex].bg }}
-      >
-        <div className="cs-shell relative w-full">
-          {/* Grain overlay */}
-          <div
-            className="cs-grain absolute inset-0 pointer-events-none"
-            style={{ zIndex: 50 }}
-          />
+      <style>{MOBILE_HERO_STYLES}</style>
 
-          {/* Giant ghost text */}
-          <div
-            className="absolute inset-x-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
-            style={{ zIndex: 2, top: isMobile ? "22%" : "18%" }}
-          >
-            <div className="cs-ghost px-4">{CAR_SHOWCASE[carIndex].ghost}</div>
+      {isMobile ? (
+        /* ═══════════════════ MOBILE HERO — matches mockup ═══════════════════ */
+        <section
+          className="csm-root"
+          style={{ backgroundColor: CAR_SHOWCASE[carIndex].bg }}
+        >
+          {/* Grain overlay */}
+          <div className="csm-grain" aria-hidden="true" />
+
+          {/* Ghost text — font-size scales with word length so 9-char HATCHBACK
+              fits the same viewport as 3-char SUV without overflow. */}
+          <div className="csm-ghost-wrap" aria-hidden="true">
+            <div
+              className="csm-ghost"
+              style={{
+                fontSize: `clamp(56px, ${Math.min(
+                  38,
+                  175 / CAR_SHOWCASE[carIndex].ghost.length,
+                )}vw, 175px)`,
+              }}
+            >
+              {CAR_SHOWCASE[carIndex].ghost}
+            </div>
           </div>
 
-          {/* Carousel */}
-          <div className="absolute inset-0" style={{ zIndex: 3 }}>
+          {/* Car carousel — center + peeking side cars */}
+          <div className="csm-cars">
             {CAR_SHOWCASE.map((car, i) => (
-              <div key={i} className="cs-item" style={getCarItemStyle(i)}>
+              <div key={i} className="csm-car" style={getMobileCarStyle(i)}>
                 <img
                   loading="eager"
-                  fetchpriority="high"
                   src={car.src}
                   alt={car.label}
                   draggable={false}
@@ -329,30 +564,56 @@ const About: React.FC = () => {
             ))}
           </div>
 
-          {/* Bottom-left text + nav buttons */}
-          <div
-            className="cs-body-text absolute bottom-6 left-4 sm:bottom-10 sm:left-10 lg:bottom-20 lg:left-24 text-white"
-            style={{ zIndex: 60 }}
-          >
-            <p className="cs-tagline mb-2 sm:mb-3">
-              {CAR_SHOWCASE[carIndex].tagline}
-            </p>
-            <p className="cs-body-desc hidden sm:block mb-4 sm:mb-5">
+          {/* Bottom content */}
+          <div className="csm-content">
+            <p className="csm-tagline">{CAR_SHOWCASE[carIndex].tagline}</p>
+            <p className="csm-desc">
               Professional service across every major brand — certified
               technicians, genuine parts, guaranteed workmanship. Every car
               deserves expert care, and we deliver it.
             </p>
-            <div className="flex gap-2 sm:gap-3">
+
+            {/* Three feature pills */}
+            <div className="csm-pills">
+              <div className="csm-pill">
+                <span className="csm-pill-icon">
+                  <Wrench size={16} strokeWidth={2.4} />
+                </span>
+                <span className="csm-pill-text">
+                  Multi-Brand
+                  <br />
+                  Service
+                </span>
+              </div>
+              <div className="csm-pill">
+                <span className="csm-pill-icon">
+                  <ShieldCheck size={16} strokeWidth={2.4} />
+                </span>
+                <span className="csm-pill-text">
+                  Genuine
+                  <br />
+                  Parts
+                </span>
+              </div>
+              <div className="csm-pill">
+                <span className="csm-pill-icon">
+                  <Users size={16} strokeWidth={2.4} />
+                </span>
+                <span className="csm-pill-text">
+                  Expert
+                  <br />
+                  Technicians
+                </span>
+              </div>
+            </div>
+
+            {/* Actions row: prev / next / Book Service */}
+            <div className="csm-actions">
               <button
                 type="button"
                 onClick={() => navigateCar("prev")}
                 aria-label="Previous car"
-                className="cs-nav-btn cs-nav-btn-inner w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-full"
-                style={{
-                  background: "transparent",
-                  border: "2px solid #fff",
-                  color: "#fff",
-                }}
+                className="csm-nav"
               >
                 <ArrowLeft size={22} strokeWidth={2.25} />
               </button>
@@ -360,32 +621,113 @@ const About: React.FC = () => {
                 type="button"
                 onClick={() => navigateCar("next")}
                 aria-label="Next car"
-                className="cs-nav-btn cs-nav-btn-inner w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-full"
-                style={{
-                  background: "transparent",
-                  border: "2px solid #fff",
-                  color: "#fff",
-                }}
+                className="csm-nav"
               >
                 <ArrowRight size={22} strokeWidth={2.25} />
               </button>
+              <Link to="/services" className="csm-book">
+                Book Service
+                <ArrowRight size={20} strokeWidth={2.5} />
+              </Link>
             </div>
           </div>
-
-          {/* Bottom-right link */}
-          <Link
-            to="/services"
-            className="cs-discover absolute bottom-3 right-3 sm:bottom-10 sm:right-8 lg:bottom-20 lg:right-10 flex items-center gap-1 sm:gap-2"
-            style={{ zIndex: 60 }}
-          >
-            BOOK SERVICE
-            <ArrowRight
-              className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8"
-              strokeWidth={2.25}
+        </section>
+      ) : (
+        /* ═══════════════════ DESKTOP HERO — unchanged ═══════════════════ */
+        <section
+          className="cs-root relative w-full overflow-hidden"
+          style={{ backgroundColor: CAR_SHOWCASE[carIndex].bg }}
+        >
+          <div className="cs-shell relative w-full">
+            {/* Grain overlay */}
+            <div
+              className="cs-grain absolute inset-0 pointer-events-none"
+              style={{ zIndex: 50 }}
             />
-          </Link>
-        </div>
-      </section>
+
+            {/* Giant ghost text */}
+            <div
+              className="absolute inset-x-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
+              style={{ zIndex: 2, top: "18%" }}
+              aria-hidden="true"
+            >
+              <div className="cs-ghost px-4">
+                {CAR_SHOWCASE[carIndex].ghost}
+              </div>
+            </div>
+
+            {/* Carousel */}
+            <div className="absolute inset-0" style={{ zIndex: 3 }}>
+              {CAR_SHOWCASE.map((car, i) => (
+                <div key={i} className="cs-item" style={getCarItemStyle(i)}>
+                  <img
+                    loading="eager"
+                    src={car.src}
+                    alt={car.label}
+                    draggable={false}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom-left text + nav buttons */}
+            <div
+              className="cs-body-text absolute bottom-6 left-4 sm:bottom-10 sm:left-10 lg:bottom-20 lg:left-24 text-white"
+              style={{ zIndex: 60 }}
+            >
+              <p className="cs-tagline mb-2 sm:mb-3">
+                {CAR_SHOWCASE[carIndex].tagline}
+              </p>
+              <p className="cs-body-desc hidden sm:block mb-4 sm:mb-5">
+                Professional service across every major brand — certified
+                technicians, genuine parts, guaranteed workmanship. Every car
+                deserves expert care, and we deliver it.
+              </p>
+              <div className="flex gap-2 sm:gap-3">
+                <button
+                  type="button"
+                  onClick={() => navigateCar("prev")}
+                  aria-label="Previous car"
+                  className="cs-nav-btn cs-nav-btn-inner w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-full"
+                  style={{
+                    background: "transparent",
+                    border: "2px solid #fff",
+                    color: "#fff",
+                  }}
+                >
+                  <ArrowLeft size={22} strokeWidth={2.25} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => navigateCar("next")}
+                  aria-label="Next car"
+                  className="cs-nav-btn cs-nav-btn-inner w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 flex items-center justify-center rounded-full"
+                  style={{
+                    background: "transparent",
+                    border: "2px solid #fff",
+                    color: "#fff",
+                  }}
+                >
+                  <ArrowRight size={22} strokeWidth={2.25} />
+                </button>
+              </div>
+            </div>
+
+            {/* Bottom-right link */}
+            <Link
+              to="/services"
+              className="cs-discover absolute bottom-3 right-3 sm:bottom-10 sm:right-8 lg:bottom-20 lg:right-10 flex items-center gap-1 sm:gap-2"
+              style={{ zIndex: 60 }}
+            >
+              BOOK SERVICE
+              <ArrowRight
+                className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8"
+                strokeWidth={2.25}
+              />
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* ── Main Content ──────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
