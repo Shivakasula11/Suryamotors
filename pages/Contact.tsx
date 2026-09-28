@@ -470,11 +470,11 @@ const Contact: React.FC = () => {
           alt="Surya Motors showroom"
           aria-hidden="true"
           loading="eager"
-          className="absolute inset-0 w-full h-full object-cover object-[70%_center] sm:object-[65%_center] md:object-center"
+          className="absolute inset-0 w-full h-full object-contain object-bottom sm:object-cover sm:object-[65%_center] md:object-center"
         />
 
         {/* Dark gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0f1e33]/95 via-[#0f1e33]/70 to-[#0f1e33]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0f1e33]/90 via-[#0f1e33]/50 to-[#0f1e33]/10" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0f1e33]/80 via-transparent to-transparent" />
 
         {/* Subtle grid pattern overlay */}
@@ -488,7 +488,7 @@ const Contact: React.FC = () => {
         />
 
         {/* Content — text overlaid on image */}
-        <div className="relative z-10 max-w-[1440px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 md:py-24 lg:py-28 min-h-screen flex flex-col justify-center">
+        <div className="relative z-10 max-w-[1440px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 md:py-24 lg:py-28 min-h-[85vh] sm:min-h-screen flex flex-col justify-center">
           <div className="max-w-2xl">
             <nav
               className={`flex items-center gap-1.5 text-[0.65rem] sm:text-xs text-blue-200/80 font-medium uppercase tracking-[0.15em] mb-4 sm:mb-5 ${
