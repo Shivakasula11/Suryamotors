@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { COMPANY_NAME } from '../constants';
-import Logo from '../pages/assests/logo1.png';
+import Logo from '../pages/assests/Logo1.png';
 
 interface NavbarProps {
   isDarkMode: boolean;
